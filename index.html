@@ -10,16 +10,16 @@
     <title>United Against Discrimination</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="/uad.github.io/css/bootstrap.css" />
+    <link rel="stylesheet" href="/uad/css/bootstrap.css" />
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="/uad.github.io/css/style.css"  />
+    <link rel="stylesheet" href="/uad/css/style.css"  />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.0/MarkerCluster.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.0/MarkerCluster.Default.css" />
-	<link rel="stylesheet" href="/uad.github.io/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="/uad.github.io/css/font-awesome.css" />
-	<link rel="stylesheet" href="/uad.github.io/css/custom.css" />
+	<link rel="stylesheet" href="/uad/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/uad/css/font-awesome.css" />
+	<link rel="stylesheet" href="/uad/css/custom.css" />
 	
 	<!-- loads Leaflet -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.js"></script>
@@ -71,17 +71,17 @@
 		<!-- menu items -->
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/uad.github.io/index">MAP</a></li>
-            <li><a href="/uad.github.io/project">THE PROJECT</a></li>
+            <li class="active"><a href="/uad/index">MAP</a></li>
+            <li><a href="/uad/project">THE PROJECT</a></li>
               </ul>
 		<!-- social media icons -->
          <ul class="nav navbar-nav navbar-right social">
-			<li><a href="https://github.com/dare-lab/uad.github.io" target="_blank"><i class="fa fa-lg fa-github"></i></a></li>
+			<li><a href="https://github.com/dare-lab/uad" target="_blank"><i class="fa fa-lg fa-github"></i></a></li>
          </ul>
         </div><!--/.nav-collapse -->
       </div>
 		<script href="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script href="/uad.github.io/js/bootstrap.min.js"></script>
+		<script href="/uad/js/bootstrap.min.js"></script>
     </div>
     <!-- MAP -->
 	<div id="map"></div>
@@ -99,8 +99,8 @@
 	<!-- loads jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/uad.github.io/js/bootstrap.min.js"></script>
-    <script src="/uad.github.io/leaflet-omnivore-master/leaflet-omnivore.js"></script>
+    <script src="/uad/js/bootstrap.min.js"></script>
+    <script src="/uad/leaflet-omnivore-master/leaflet-omnivore.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.0/leaflet.markercluster-src.js"></script>
  
 	<!-- Initiates Modal and Uses cookies for Dont Show Again Checkbox -->     
@@ -158,7 +158,7 @@ L.tileLayer ('https://a.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={a
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'}).addTo(map);
 
 //enter path for .csv here
-var markers = omnivore.csv('/uad.github.io/data/uad-combined-230220.csv')
+var markers = omnivore.csv('/uad/data/uad-combined-230220.csv')
 	.on('ready', function(layer) {
 	map.fitBounds(markers.getBounds());
 	markerClusters.addLayer(markers);
