@@ -152,22 +152,22 @@ $(window).on("resize", function () {
       
 	<!-- Pulls data from csv and intitiates map -->
 	<script>
-var map = L.map('map').setView([50.1154217,-119.2571592], 8);
+var map = L.map('map').setView([50.1154217,-119.2571592], 10);
 
 L.tileLayer ('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
 //enter path for .csv here
-var markers = omnivore.csv('/uad/data/uad-combined-230220.csv')
+var markers = omnivore.csv('/uad/data/uad-combined-230225.csv')
 	.on('ready', function(layer) {
 	map.fitBounds(markers.getBounds());
 	markerClusters.addLayer(markers);
 	map.addLayer(markerClusters); 
 	this.eachLayer(function(marker) {
 	
-	marker.bindPopup(marker.toGeoJSON().properties.City + '<br><b>Report: </b>' + marker.toGeoJSON().properties.Public + '<br><b>Year: </b>' + 
-	marker.toGeoJSON().properties.Year, {autoPanPadding: [5,55]});
+	marker.bindPopup(marker.toGeoJSON().properties.City + '<br><b>Public: </b>' + marker.toGeoJSON().properties.Public + '<br><b>Year: </b>' + 
+    marker.toGeoJSON().properties.Year, {autoPanPadding: [5,55]});
 		});
 	});	
 var markerClusters = L.markerClusterGroup();
