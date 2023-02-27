@@ -77,25 +77,6 @@ code {
 		width: 100%;
 }
 
-.my-icons {
-  background-color: rgba(0, 255, 0, 1);
-}
-
-/* center align svg elements */
-.leaflet-marker-icon {
-    text-align: center;
-}
-
-/* scale icon to parent height - set a max-width to avoid overflows */
-.svg-inline--fa {
-    display: inline-block;
-    font-size: inherit;
-    width: auto!important; 
-    height: 100%!important;
-    overflow: visible;
-    max-width: 100%; 
-}
-
 .leaflet-control-zoom.leaflet-bar.leaflet-control{
     margin-top: 80px;
 }
