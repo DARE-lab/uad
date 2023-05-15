@@ -45,7 +45,7 @@
                     </div>
                     <div class="modal-body">
 				
-                    <p> This visualization illustrates a sample of victim reports as submitted on the United Against Discrimination portal between 2020 and 2022. The reports are focused on the Okanagan in the western province of British Columbia.</p>
+                    <p> This visualization illustrates a sample of victim reports as submitted on the United Against Discrimination portal between 2020 and 2023. The reports are focused on the Okanagan in the western province of British Columbia.</p>
 					 
                     </div>
                     <div class="modal-footer">
@@ -151,19 +151,21 @@ $(window).on("resize", function () {
 	<script>
 var map = L.map('map').setView([49.891103, -119.330027], 10);
 
-L.tileLayer ('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
-    maxZoom: 20,}).addTo(map);
+L.tileLayer ('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {,
+    maxZoom: 20,
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'}).addTo(map);
 
 //enter path for .csv here
-var markers = omnivore.csv('/uad/data/uad-combined-230225.csv')
+var markers = omnivore.csv('/uad/data/map-cleaned-230514.csv')
 	.on('ready', function(layer) {
 	map.fitBounds(markers.getBounds());
 	markerClusters.addLayer(markers);
 	map.addLayer(markerClusters); 
 	this.eachLayer(function(marker) {
 	
-	marker.bindPopup(marker.toGeoJSON().properties.City + '<br><b>Public: </b>' + marker.toGeoJSON().properties.Public + '<br><b>Year: </b>' + 
-    marker.toGeoJSON().properties.Year, {autoPanPadding: [5,55]});
+	marker.bindPopup(marker.toGeoJSON().properties.City + '<br><b>Year: </b>' + 
+    marker.toGeoJSON().properties.Year + '<br><b>Assault: </b>' + 
+    marker.toGeoJSON().properties.Assault, {autoPanPadding: [5,55]});
 		});
 	});	
 var markerClusters = L.markerClusterGroup();
