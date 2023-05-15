@@ -165,7 +165,7 @@ var markers = omnivore.csv('/uad/data/map-230514.csv')
 	
 	marker.bindPopup(marker.toGeoJSON().properties.City + '<br><b>Year: </b>' + 
     marker.toGeoJSON().properties.Year + '<br><b>Assault: </b>' + 
-    marker.toGeoJSON().properties.Assault-g, {autoPanPadding: [5,55]});
+    marker.toGeoJSON().properties.Assault2, {autoPanPadding: [5,55]});
 		});
 	});	
 var markerClusters = L.markerClusterGroup();
