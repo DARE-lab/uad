@@ -156,7 +156,7 @@ L.tileLayer ('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'}).addTo(map);
 
 //enter path for .csv here
-var markers = omnivore.csv('/uad/data/map-cleaned-230514.csv')
+var markers = omnivore.csv('/uad/data/map-230514.csv')
 	.on('ready', function(layer) {
 	map.fitBounds(markers.getBounds());
 	markerClusters.addLayer(markers);
