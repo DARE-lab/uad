@@ -166,7 +166,7 @@ var markers = omnivore.csv('/uad/data/map-230514.csv')
 	marker.bindPopup(marker.toGeoJSON().properties.City + '<br><b>Year: </b>' + 
     marker.toGeoJSON().properties.Year + '<br><b>Assault: </b>' + 
     marker.toGeoJSON().properties.Assault2 + '<br><b>Perpetrator Race: </b>' + 
-    marker.toGeoJSON().properties.Perpetrator_Race + '<br><b>Victim Race: </b>' + marker.toGeoJSON().properties.Victim_Race, + '<br><b>Perpetrator Gender: </b>' + marker.toGeoJSON().properties.Perpetrator_Gender, '<br><b>Victim Gender: </b>' + marker.toGeoJSON().properties.Victim_Gender, {autoPanPadding: [5,55]});
+    marker.toGeoJSON().properties.PerpetratorRace + '<br><b>Victim Race: </b>' + marker.toGeoJSON().properties.VictimRace, + '<br><b>Perpetrator Gender: </b>' + marker.toGeoJSON().properties.PerpetratorGender, '<br><b>Victim Gender: </b>' + marker.toGeoJSON().properties.VictimGender, {autoPanPadding: [5,55]});
 		});
 	});	
 var markerClusters = L.markerClusterGroup();
