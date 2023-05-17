@@ -154,6 +154,7 @@ L.tileLayer ('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 20,
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'}).addTo(map);
 
+<!-- Data path 
 //enter path for .csv here
 var markers = omnivore.csv('/uad/data/map-230514.csv')
 	.on('ready', function(layer) {
@@ -164,20 +165,27 @@ var markers = omnivore.csv('/uad/data/map-230514.csv')
 	
 	marker.bindPopup(marker.toGeoJSON().properties.City + '<br><b>Year: </b>' + 
     marker.toGeoJSON().properties.Year + '<br><b>Assault: </b>' + 
-    marker.toGeoJSON().properties.Assault2, {autoPanPadding: [5,55]});
+    marker.toGeoJSON().properties.Assault2 + '<br><b>Perpetrator Race: </b>' + 
+    marker.toGeoJSON().properties.Perpetrator_Race + '<br><b>Victim Race: </b>' + marker.toGeoJSON().properties.Victim_Race, + '<br><b>Perpetrator Gender: </b>' + marker.toGeoJSON().properties.Perpetrator_Gender, '<br><b>Victim Gender: </b>' + marker.toGeoJSON().properties.Victim_Gender, {autoPanPadding: [5,55]});
 		});
 	});	
 var markerClusters = L.markerClusterGroup();
 for (var i = 0; i < markers.length; ++i)
 {
 }
-map.addLayer(markerClusters);
+map.addLayer(markerClusters); -->
+</script> 
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RYW4B94F37"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RYW4B94F37');
 </script>
 
-<!-- Google Analytics -->
-<script>
-  
 
 </script>
           
