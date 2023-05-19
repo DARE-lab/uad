@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" width="device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, 
+    initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="description" content="Webmap for United Against Discrimination (UAD) portal">
 	<meta name="author" content="Dr Shirley Chau and Dr Neha Gupta">
 
@@ -67,9 +68,9 @@
     <div class="footer">
     <div class="container">
     <p class="text-muted">Github Hosting <a href="https://github.com/" target="_blank"> Github</a></p> 
-    --> 
+    
     </div>
-    </div>
+    </div>--> 
 
 
     <!-- Bootstrap core JavaScript
@@ -96,25 +97,8 @@ var markers = omnivore.csv('/uad/data/map-230516.csv')
 	map.fitBounds(markers.getBounds());
 	markerClusters.addLayer(markers);
 	map.addLayer(markerClusters); 
-	this.eachLayer(function(marker) {
-	
-	marker.bindPopup(marker.toGeoJSON().properties.City + '<br><b>Year: </b>' + 
-    marker.toGeoJSON().properties.Year + '<br><b>Assault: </b>' + 
-    marker.toGeoJSON().properties.Assault2 + '<br><b>Perpetrator Race: </b>' + 
-    marker.toGeoJSON().properties.PerpetratorRace + '<br><b>Victim Race: </b>' + marker.toGeoJSON().properties.VictimRace + '<br><b>Perpetrator Gender: </b>' + marker.toGeoJSON().properties.PerpetratorGender + '<br><b>Victim Gender: </b>' + marker.toGeoJSON().properties.VictimGender, {autoPanPadding: [5,55]});
-		});
-	});	
-var markerClusters = L.markerClusterGroup();
-for (var i = 0; i < markers.length; ++i)
-{
-}
-map.addLayer(markerClusters);
 
-
-// Set up styles for markers
-function pointStyle(marker) {
-  
-
+  function pointStyle(marker) {
 var colorToUse;
   var marker = marker.toGeoJSON().properties.Year;
             
@@ -128,7 +112,20 @@ var colorToUse;
     "color": colorToUse,
     "weight": 5
   };
+};
+	this.eachLayer(function(marker) {
+	
+	marker.bindPopup(marker.toGeoJSON().properties.City + '<br><b>Year: </b>' + 
+    marker.toGeoJSON().properties.Year + '<br><b>Assault: </b>' + 
+    marker.toGeoJSON().properties.Assault2 + '<br><b>Perpetrator Race: </b>' + 
+    marker.toGeoJSON().properties.PerpetratorRace + '<br><b>Victim Race: </b>' + marker.toGeoJSON().properties.VictimRace + '<br><b>Perpetrator Gender: </b>' + marker.toGeoJSON().properties.PerpetratorGender + '<br><b>Victim Gender: </b>' + marker.toGeoJSON().properties.VictimGender, {autoPanPadding: [5,55]});
+		});
+	});	
+var markerClusters = L.markerClusterGroup();
+for (var i = 0; i < markers.length; ++i)
+{
 }
+map.addLayer(markerClusters);
           
 // Create layer and add it to the map
 var pointLayer = L.geoJSON(markers, {
