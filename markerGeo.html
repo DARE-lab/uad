@@ -106,16 +106,17 @@ function style(feature) {
 }
 
 $.getJSON('/uad/data/mapgeo.geojson', function(data) {
-    L.geoJSON(data, {style: style}, {
+    geojson = L.geoJSON(data, {
       onEachFeature: function(feature, layer) {
             layer.bindPopup(
                 '<div class="popup">' + 
                 feature.properties.City + '<br><b>Year: </b>' + 
     feature.properties.Year + '<br><b>Assault: </b>' + 
     feature.properties.Assault2 + '<br><b>Perpetrator Race: </b>' + 
-    feature.properties.PerpetratorRace + '<br><b>Victim Race: </b>' + feature.properties.VictimRace + '<br><b>Perpetrator Gender: </b>' + feature.properties.PerpetratorGender + '<br><b>Victim Gender: </b>' + feature.properties.VictimGender, {autoPanPadding: [5,55]}); 
-                '</div>'
-        }}).addTo(map);
+    feature.properties.PerpetratorRace + '<br><b>Victim Race: </b>' + feature.properties.VictimRace + '<br><b>Perpetrator Gender: </b>' + feature.properties.PerpetratorGender + '<br><b>Victim Gender: </b>' + feature.properties.VictimGender, {autoPanPadding: [5,55]} + '</div>');
+                
+        }, style: style
+      }).addTo(map);
     
 });
 
