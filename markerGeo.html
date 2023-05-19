@@ -87,6 +87,14 @@ L.tileLayer ('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 //enter geojson style here
 var geojson;
 
+function getColor(d) {
+    if(d === 2020) return "#b30000"; else
+    if(d === 2021) return "#e34a33"; else
+    if(d === 2022) return "#fc8d59"; else
+    if(d === 2023) return "#fdcc8a"; else 
+        return "#fef0d9";
+}
+
 function style(feature) {
     return {
         fillColor: getColor(feature.properties.Year),
