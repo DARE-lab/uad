@@ -25,7 +25,6 @@
 	
 	<!-- loads Leaflet -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.js"></script>
-    <script src="/uad/js/leaflet.extra-markers.min.js"></script>
 	
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -88,24 +87,18 @@
     <!-- MAP -->
 	<div id="map"></div>
  
-    <!-- FOOTER  
-    <div class="footer">
-    <div class="container">
-    <p class="text-muted">Github Hosting <a href="https://github.com/" target="_blank"> Github</a></p> 
-    </div>
-    </div>--> 
-
-
+ 
     <!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- loads jQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/uad/js/bootstrap.min.js"></script>
     <script src="/uad/leaflet-omnivore-master/leaflet-omnivore.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.0/leaflet.markercluster-src.js"></script>
- 
-	<!-- Initiates Modal and Uses cookies for Dont Show Again Checkbox -->     
+    <script src="/uad/js/leaflet.extra-markers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.0/leaflet.markercluster-src.js"></script>
+	
+    <!-- Initiates Modal and Uses cookies for Dont Show Again Checkbox -->     
 <script type="text/javascript">
  $(document).ready(function () {
     $('#myModal').modal();
@@ -151,34 +144,56 @@ $(window).on("resize", function () {
       
 	<!-- Pulls data from csv and intitiates map -->
 	<script>
-var map = L.map('map').setView([49.891103, -119.330027], 10);
+var map = L.map('map').setView([49.931103, -119.530027], 10);
 
 L.tileLayer ('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 22,
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'}).addTo(map);
 
 
-//enter path for .csv here
-var markers = omnivore.csv('/uad/data/map-230516.csv')
-	.on('ready', function(layer) {
-	map.fitBounds(markers.getBounds());
-	markerClusters.addLayer(markers);
-	map.addLayer(markerClusters); 
-	this.eachLayer(function(marker) {
-	
-	marker.bindPopup(marker.toGeoJSON().properties.City + '<br><b>Year: </b>' + 
-    marker.toGeoJSON().properties.Year + '<br><b>Assault: </b>' + 
-    marker.toGeoJSON().properties.Assault2 + '<br><b>Perpetrator Race: </b>' + 
-    marker.toGeoJSON().properties.PerpetratorRace + '<br><b>Victim Race: </b>' + marker.toGeoJSON().properties.VictimRace + '<br><b>Perpetrator Gender: </b>' + marker.toGeoJSON().properties.PerpetratorGender + '<br><b>Victim Gender: </b>' + marker.toGeoJSON().properties.VictimGender, {autoPanPadding: [5,55]});
-		});
-	});	
-var markerClusters = L.markerClusterGroup();
-for (var i = 0; i < markers.length; ++i)
-{
-}
-map.addLayer(markerClusters);
-</script> 
+//enter geojson style here
 
+function labels (feature, layer){
+        layer.bindPopup(
+                '<div class="popup">' + 
+                feature.properties.City + '<br><b>Year: </b>' + 
+    feature.properties.Year + '<br><b>Assault: </b>' + 
+    feature.properties.Assault2 + '<br><b>Perpetrator Race: </b>' + 
+    feature.properties.PerpetratorRace + '<br><b>Victim Race: </b>' + feature.properties.VictimRace + '<br><b>Perpetrator Gender: </b>' + feature.properties.PerpetratorGender + '<br><b>Victim Gender: </b>' + feature.properties.VictimGender, {autoPanPadding: [5,55]} + '</div>');
+                
+        };
 
-          
+        <!-- LAYERS/SITES POP UP COLOUR CIRCLE MARKERS->
+        function getColor(vrace) {
+          if(vrace === "White") return "white"; else
+          if(vrace === "South Asian") return "#DEB887"; else
+          if(vrace === "Black") return "black"; else
+          if(vrace === "Latino") return "#DEB887"; else
+          if(vrace === "Asian") return "#DEB887"; else
+          if(vrace === "Indigenous") return "#DEB887"; else
+          return "#bae4b3";
+          }
+
+          function style(feature) {
+    return {
+        radius: 5,
+        fillColor: getColor(feature.properties.VictimRace),
+        weight: 0.5,
+        opacity: 1,
+        color: "black",
+        fillOpacity: 0.7
+        };
+    }
+        <!-- LAYERS/SITES ADD LAYER->
+$.getJSON("/uad/data/mapgeo.geojson", function(data) {
+    var geojson = L.geoJSON(data, {
+            pointToLayer: function (feature, latlng) {
+            var styleForThisFeature = style(feature);
+            var featureForThisPoint = L.circleMarker(latlng, styleForThisFeature);
+        return featureForThisPoint;
+    },
+            onEachFeature: labels
+        }).addTo(map);
+});
+    </script>
 </body></html>
